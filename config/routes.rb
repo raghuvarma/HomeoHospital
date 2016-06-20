@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tokens
+  resources :applications
   #get 'welcome/index'
 
   devise_for :users
@@ -11,7 +13,6 @@ Rails.application.routes.draw do
   end
   root :to => 'welcome#index'
 
-  resources :tokens
   resources :users
   resources :roles
   # The priority is based upon order of creation: first created -> highest priority.

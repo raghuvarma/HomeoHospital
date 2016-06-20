@@ -5,5 +5,20 @@
   <%= @token.name %>
 </p>
 
+<p>
+  <strong>Relation name:</strong>
+  <%= @token.relation_name %>
+</p>
+
+<p>
+  <strong>Is new application:</strong>
+  <%= @token.is_new_application %>
+</p>
+
+<p>
+  <strong>Application:</strong>
+  <%= @token.application %>
+</p>
+
 <%= link_to 'Edit', edit_token_path(@token) %> |
 <%= link_to 'Back', tokens_path %>

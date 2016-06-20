@@ -3,11 +3,13 @@
 one:
   name: MyString
   relation_name: MyString
-  is_new_application: false
-  application_id: 
+  address: MyText
+  details: MyText
+  is_doctor: false
 
 two:
   name: MyString
   relation_name: MyString
-  is_new_application: false
-  application_id: 
+  address: MyText
+  details: MyText
+  is_doctor: false
