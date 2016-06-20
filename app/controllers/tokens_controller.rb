@@ -1,7 +1,7 @@
 class TokensController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_token, only: [:show, :edit, :update, :destroy]
-
+  #before_action :set_token, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
   # GET /tokens
   # GET /tokens.json
   def index
@@ -15,7 +15,7 @@ class TokensController < ApplicationController
 
   # GET /tokens/new
   def new
-    @token = Token.new
+    #@token = Token.new
   end
 
   # GET /tokens/1/edit
@@ -25,7 +25,7 @@ class TokensController < ApplicationController
   # POST /tokens
   # POST /tokens.json
   def create
-    @token = Token.new(token_params)
+    #@token = Token.new(token_params)
 
     respond_to do |format|
       if @token.save
@@ -64,9 +64,9 @@ class TokensController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_token
-      @token = Token.find(params[:id])
-    end
+    # def set_token
+    #   @token = Token.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def token_params

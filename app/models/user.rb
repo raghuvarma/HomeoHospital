@@ -10,8 +10,20 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 	before_save :assign_role
 
-	def assign_role
-	  self.role = Role.find_by name: "Staff" if self.role.nil?
+	# def assign_role
+	#   self.role = Role.find_by name: "Staff" if self.role.nil?
+	# end
+
+	def admin?
+	  self.role.name == "Admin"
+	end
+
+	def doctor?
+	  self.role.name == "Doctor"
+	end
+
+	def staff?
+	  self.role.name == "Staff"
 	end
 
 end
