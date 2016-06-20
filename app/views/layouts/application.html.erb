@@ -19,6 +19,10 @@
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, id: "flash_#{name}" %>
 <% end %>
+	
+<% if user_signed_in? %>
+<nav><ul><%= link_to 'Home', root_path, :style => "padding: 8px;" %><%= link_to 'Tokens', tokens_path, :style => "padding: 8px;" %><%= link_to 'Applications', applications_path, :style => "padding: 8px;" %></ul></nav>
+<% end %>
 
 <%= yield %>
 

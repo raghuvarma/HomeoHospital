@@ -26,7 +26,10 @@ class TokensController < ApplicationController
   # POST /tokens.json
   def create
     #@token = Token.new(token_params)
-
+    if(@token.is_new_application)
+      @new_application = Application.new(:id => Application.count + 1, :name => @token.name, :relation_name => @token.relation_name);
+      @new_application.save!
+    end
     respond_to do |format|
       if @token.save
         format.html { redirect_to @token, notice: 'Token was successfully created.' }
