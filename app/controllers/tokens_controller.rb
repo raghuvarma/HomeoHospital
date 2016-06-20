@@ -1,4 +1,5 @@
 class TokensController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_token, only: [:show, :edit, :update, :destroy]
 
   # GET /tokens
