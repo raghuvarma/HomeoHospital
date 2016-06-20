@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  #get 'welcome/index'
+
   devise_for :users
   scope "/admin" do
     resources :users
   end
+
+  authenticated :user do
+    root :to => 'tokens#index', as: :authenticated_root
+  end
+  root :to => 'welcome#index'
 
   resources :tokens
   resources :users
@@ -11,7 +18,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'token#index'
+   #root 'token#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
