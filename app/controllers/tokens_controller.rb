@@ -29,7 +29,9 @@ class TokensController < ApplicationController
     if(@token.is_new_application)
       @new_application = Application.new(:id => Application.count + 1, :name => @token.name, :relation_name => @token.relation_name);
       @new_application.save!
+      @token.application_id = @new_application.id
     end
+     
     respond_to do |format|
       if @token.save
         format.html { redirect_to @token, notice: 'Token was successfully created.' }

@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Application No:</strong>
+  <%= @application.id %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @application.name %>
 </p>
@@ -27,3 +32,27 @@
 
 <%= link_to 'Edit', edit_application_path(@application) %> |
 <%= link_to 'Back', applications_path %>
+
+<% if @lastToken %>
+<div>
+  <p>Last Token</p>
+  <% @lastToken.each do | lastToken | %>
+    <div>Last Token Id: <%= lastToken.id %></div>
+    <div>Last Token Date: <%= lastToken.updated_at %></div>
+  <% end %>
+</div>
+<% end %>
+
+<%# if @lastFiveTokens %>
+<!-- <div>
+  <p>Last Five Tokens</p>
+  <%# @lastFiveTokens %>
+</div> -->
+<%# end %>
+
+<%# if @allTokens %>
+<!-- <div>
+  <p>Last Token</p>
+  <%# @allTokens %>
+</div> -->
+<%# end %>

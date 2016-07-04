@@ -10,6 +10,12 @@ class ApplicationsController < ApplicationController
   # GET /applications/1
   # GET /applications/1.json
   def show
+
+    #@application = Application.find(params[:id])
+    @lastToken = @application.tokens.last
+    @lastFiveTokens = @application.tokens.last(5)
+    @allTokens = @application.tokens
+
   end
 
   # GET /applications/new

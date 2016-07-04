@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Relation name</th>
       <th>Address</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @applications.each do |application| %>
       <tr>
+        <td><%= application.id %></td>
         <td><%= application.name %></td>
         <td><%= application.relation_name %></td>
         <td><%= application.address %></td>
