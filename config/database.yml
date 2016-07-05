@@ -84,8 +84,10 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+  pool: 5
+  timeout: 5000
+  encoding: utf8
   adapter: postgresql
-  encoding: unicode
   database: homeohospital
-  username: kovrdwxvzpvaac
-  password: l3R7qdGZl6N75Q_pQk1va_lQSq
+  username: postgres
+  password: 
