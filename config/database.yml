@@ -83,4 +83,4 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: HomeoHospital_production
+  database: homeohospital
