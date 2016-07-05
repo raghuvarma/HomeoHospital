@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
+  username: postgreskovrdwxvzpvaac
   password: postgres
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -84,3 +84,5 @@ production:
   adapter: postgresql
   encoding: unicode
   database: homeohospital
+  username: kovrdwxvzpvaac
+  password: l3R7qdGZl6N75Q_pQk1va_lQSq
