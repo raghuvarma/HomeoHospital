@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620193639) do
+ActiveRecord::Schema.define(version: 20160710031003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,27 @@ ActiveRecord::Schema.define(version: 20160620193639) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  create_table "preceptions", force: :cascade do |t|
+    t.text     "problem"
+    t.text     "medicine"
+    t.integer  "application_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "doctor_name"
+  end
+
+  add_index "preceptions", ["application_id"], name: "index_preceptions_on_application_id", using: :btree
+
+  create_table "problems", force: :cascade do |t|
+    t.string   "problem_type"
+    t.text     "description"
+    t.integer  "application_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "problems", ["application_id"], name: "index_problems_on_application_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +61,8 @@ ActiveRecord::Schema.define(version: 20160620193639) do
     t.integer  "application_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "token_id"
+    t.boolean  "is_active"
   end
 
   add_index "tokens", ["application_id"], name: "index_tokens_on_application_id", using: :btree
@@ -65,6 +88,8 @@ ActiveRecord::Schema.define(version: 20160620193639) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "preceptions", "applications"
+  add_foreign_key "problems", "applications"
   add_foreign_key "tokens", "applications"
   add_foreign_key "users", "roles"
 end

@@ -11,10 +11,13 @@ class ApplicationsController < ApplicationController
   # GET /applications/1.json
   def show
 
-    #@application = Application.find(params[:id])
-    @lastToken = @application.tokens.last
-    @lastFiveTokens = @application.tokens.last(5)
-    @allTokens = @application.tokens
+    # @application = Application.find(params[:id])
+    # @lastToken = @application.tokens ? @application.tokens.last : []
+    # @lastFiveTokens = @application.tokens.last(5)
+    # @allTokens = @application.tokens
+
+      @problems = @application.problems.reverse_each
+
 
   end
 
@@ -75,6 +78,6 @@ class ApplicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def application_params
-      params.require(:application).permit(:name, :relation_name)
+      params.require(:application).permit(:name, :relation_name, :address, :details, :is_doctor)
     end
 end

@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<h1>Tokens</h1>
+<h1>Active Tokens</h1>
 
 <table>
   <thead>
@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @tokens.each do |token| %>
+    <% @activeTokens.each do |token| %>
       <tr>
         <td><%= token.id %></td>
         <td><%= token.name %></td>

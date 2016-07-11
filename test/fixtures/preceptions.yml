@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  problem: MyText
+  medicine: MyText
+  application_id: 
+
+two:
+  problem: MyText
+  medicine: MyText
+  application_id: 

@@ -7,7 +7,7 @@
 	  <%= csrf_meta_tags %>
 	</head>
 	<body>
-		<h1 class="main-heading">Welcome to Navanetha Evergreens Home Hospital</h1>
+		<h1 class="main-heading">Welcome to Navanetha Evergreens Homeo Hospital</h1>
 		<div class="nav-header">
 
 			<% if user_signed_in? %>
@@ -24,7 +24,13 @@
 		
 
 		<% if user_signed_in? %>
-		<nav><ul><%= link_to 'Home', root_path, :style => "padding: 8px;" %><%= link_to 'Tokens', tokens_path, :style => "padding: 8px;" %><%= link_to 'Applications', applications_path, :style => "padding: 8px;" %></ul></nav>
+			<nav>
+				<ul>
+					<li style="list-style-type: none; display: inline-block;" click="linkClick()"><%= link_to 'Home', root_path, :style => "padding: 8px;", :click => 'javascript:linkClick()' %></li>
+					<li style="list-style-type: none; display: inline-block;" click="linkClick()"><%= link_to 'Tokens', tokens_path, :style => "padding: 8px;" %></li>
+					<li style="list-style-type: none; display: inline-block;" click="linkClick()"><%= link_to 'Applications', applications_path, :style => "padding: 8px;" %></li>
+				</ul>
+			</nav>
 		<% end %>
 
 		<%= yield %>

@@ -22,8 +22,9 @@ class Ability
           can :destroy, Token do |item|
             item.try(:user) == user
           end
+          can :read, Application
         elsif user.doctor?
-          can :read, Token
+          can :manage, :all
         end
     #
     # The first argument to `can` is the action you are giving the user

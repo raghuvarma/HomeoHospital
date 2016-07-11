@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :tokens
-  resources :applications
+  resources :applications do
+    resources :preceptions, only: [:create]
+    resources :problems, only: [:create, :update]
+  end
+
   #get 'welcome/index'
 
   devise_for :users
@@ -9,7 +13,8 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root :to => 'tokens#index', as: :authenticated_root
+    #root :to => 'tokens#index', as: :authenticated_root
+    root :to => 'active_tokens#index', as: :authenticated_root
   end
   root :to => 'welcome#index'
 

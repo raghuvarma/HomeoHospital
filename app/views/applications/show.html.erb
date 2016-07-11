@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <p>
   <strong>Application No:</strong>
@@ -16,32 +16,125 @@
 </p>
 
 <p>
+  <strong>Is doctor:</strong>
+  <%= @application.is_doctor %>
+</p>
+
+<p>
   <strong>Address:</strong>
   <%= @application.address %>
 </p>
 
 <p>
-  <strong>Details:</strong>
-  <%= @application.details %>
-</p>
+  <strong>Problems: </strong>
+  <%# @application.details %>
+  
 
-<p>
-  <strong>Is doctor:</strong>
-  <%= @application.is_doctor %>
+<% if @problems %>
+  <ol style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;">
+    <% @problems.each do |problem| %>
+    <li>
+      <div>
+        <b>Problem Type: </b> <%= problem.problem_type %>
+      </div>
+      <div>
+        <b>Description: </b><%= problem.description %>
+      </div>
+    </li>  
+    <hr/>
+
+    <% end %>  
+  </ol>
+<% end %>
+
+<div>
+  <h3>Create Problem: </h3>
+  <div style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;">
+    <%= form_for([@application, @application.problems.build]) do |f| %>
+
+      <div>
+        <div><b>Problem Type: </b></div>
+        <%# f.text_field :problem_type %>
+        <%= f.collection_select :problem_type, Problem::TYPE, :to_s, :to_s %>
+      </div><br/>
+
+      <div>
+        <div><b>Description: </b></div>
+        <%= f.text_area :description, rows: 3, cols: 40 %>
+      </div><br/>
+
+      <div>
+        <%= f.submit "Create Problem" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 </p>
 
 <%= link_to 'Edit', edit_application_path(@application) %> |
 <%= link_to 'Back', applications_path %>
 
-<% if @lastToken %>
-<div>
-  <p>Last Token</p>
-  <% @lastToken.each do | lastToken | %>
-    <div>Last Token Id: <%= lastToken.id %></div>
-    <div>Last Token Date: <%= lastToken.updated_at %></div>
-  <% end %>
-</div>
+<hr/>
+
+<h3>Preciptions: </h3>
+
+<% if @application.preceptions %>
+  <div style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;">
+    <% @application.preceptions.each do |preception| %>
+
+    <div>
+      <b>Doctor Name: </b> <%= preception.doctor_name %>
+    </div>
+    <div>
+      <b>Problem: </b><%= preception.problem %>
+    </div>
+    <div>
+      <b>Medicine: </b><%= preception.medicine %>
+    </div>
+    <hr/>
+
+    <% end %>  
+  </div>
 <% end %>
+<div>
+  <h3>Create Preciption: </h3>
+  <div style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;">
+    <%= form_for([@application, @application.preceptions.build]) do |f| %>
+
+      <div>
+        <div><b>Doctor Name: </b></div>
+        <%= f.text_field :doctor_name %>
+      </div><br/>
+
+      <div>
+        <div><b>Problem: </b></div>
+        <%= f.text_area :problem, rows: 3, cols: 40 %>
+      </div><br/>
+
+      <div>
+        <div><b>Medicine: </b></div>
+        <%= f.text_area :medicine, rows: 9, cols: 40 %>
+      </div><br/>
+
+      <div>
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%# @lastToken %>
+
+<%# if @lastToken %>
+<!-- <div>
+  <p>Last Token</p>
+  <%# @lastToken.each do | lastToken | %>
+    <div>Last Token Id: <%# lastToken.id %></div>
+    <div>Last Token Date: <%# lastToken.updated_at %></div>
+  <%# end %>
+</div> -->
+<%# end %>
 
 <%# if @lastFiveTokens %>
 <!-- <div>

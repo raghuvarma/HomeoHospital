@@ -14,3 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function() {
+	$('nav ul li a').on('click', function() {
+		//$('nav ul a').first().addClass('fdsfsd')
+		//location.pathname.substring(1, location.pathname.length);
+		//alert('location.pathname', location.pathname);
+		$(this).siblings().removeClass('active');
+		$(this).addClass('active');
+	})
+
+	// var linkClick = function() {
+	// 	//alert('hi');
+	// 	$(this).siblings().removeClass('active');
+	// 	$(this).addClass('active');
+	// 	//$('#'+id).addClass('active');
+	// }
+
+});
+
