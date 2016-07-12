@@ -35,6 +35,10 @@
   </tbody>
 </table>
 
+<div class="pagination_wrapper">
+  <%= paginate @tokens %>
+</div>
+
 <br>
 
 <% if can? :create, Token %>

@@ -5,7 +5,7 @@ class TokensController < ApplicationController
   # GET /tokens
   # GET /tokens.json
   def index
-    @tokens = Token.all
+    @tokens = Token.all.page(params[:page]).per(10)
   end
 
   # GET /tokens/1
