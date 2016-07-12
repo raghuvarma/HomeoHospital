@@ -24,11 +24,11 @@
     <%= f.text_field :relation_name %>
   </div>
   <div class="field">
-    <b><%= f.label :is_new_application %> : </b><span class="input_madatory">*</span>
+    <b><%= f.label :is_new_application %> : </b><span id="is_new_application_error"  class="input_madatory">*</span>
     <%= f.check_box :is_new_application, :id => "idIsNewApplication" %><br>
   </div>
   <div class="field">
-    <b><%= f.label :application_id %> : </b><span id="application_id" class="input_madatory">*</span><br>
+    <b><%= f.label :application_id %> : </b><span id="application_id_error" class="input_madatory">*</span><br>
     <%= f.text_field :application_id if @token.new_record? %>
     <%= f.text_field :application_id,:readonly => true unless @token.new_record?%>
   </div>
