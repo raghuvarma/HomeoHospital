@@ -14,15 +14,16 @@ class Ability
         if user.admin?
           can :manage, :all
         elsif user.staff?
-          can :read, Token
-          can :create, Token
-          can :update, Token do |item|
-            item.try(:user) == user
-          end
-          can :destroy, Token do |item|
-            item.try(:user) == user
-          end
-          can :read, Application
+          can :manage, Token
+          # can :create, Token
+          # can :update, Token do |item|
+          #   item.try(:user) == user
+          # end
+          # can :destroy, Token do |item|
+          #   item.try(:user) == user
+          # end
+           cannot :read, Application
+          #can :create, Application
         elsif user.doctor?
           can :manage, :all
         end

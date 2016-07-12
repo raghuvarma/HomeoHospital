@@ -12,25 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <b><%= f.label :name %>: </b><span class="input_madatory">*</span><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :relation_name %><br>
+    <b><%= f.label :relation_name %>: </b><span class="input_madatory">*</span><br>
     <%= f.text_field :relation_name %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
+    <b><%= f.label :address %>: </b><br>
     <%= f.text_area :address %>
   </div>
   <div class="field">
-    <%= f.label :details %><br>
+    <b><%= f.label :details %>: </b><br>
     <%= f.text_area :details %>
   </div>
   <div class="field">
-    <%= f.label :is_doctor %><br>
-    <%= f.check_box :is_doctor %>
+    <b><%= f.label :is_doctor %>: </b>
+    <%= f.check_box :is_doctor %><br>
   </div>
+  <div><b>Note: </b> All<span class="input_madatory">*</span>&nbsp; marks are madatory to fill</div><br/>
   <div class="actions">
     <%= f.submit %>
   </div>

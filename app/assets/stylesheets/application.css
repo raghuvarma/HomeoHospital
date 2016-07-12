@@ -26,6 +26,19 @@
     font-family: cursive;
  }
 
+ .input_madatory {
+ 	color: red;
+    font-size: 18px;
+    top: 6px;
+    position: relative;
+    left: 4px;
+ }
+
+ input[readonly="readonly"] {
+ 	cursor: not-allowed;
+    background-color: silver;
+ }
+
  #flash_alert {
  	color: red;
  	font-weight: bold;

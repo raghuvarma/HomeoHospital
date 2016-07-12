@@ -12,26 +12,29 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <b><%= f.label :name %> : </b><span class="input_madatory">*</span><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :is_active %><br>
-    <%= f.check_box :is_active, :id => "idIsActive" %>
+    <b><%= f.label :is_active %> : </b>
+    <%= f.check_box :is_active, :id => "idIsActive" %><br>
   </div>
   <div class="field">
-    <%= f.label :relation_name %><br>
+    <b><%= f.label :relation_name %> : </b><span class="input_madatory">*</span><br>
     <%= f.text_field :relation_name %>
   </div>
   <div class="field">
-    <%= f.label :is_new_application %><br>
-    <%= f.check_box :is_new_application, :id => "idIsNewApplication" %>
+    <b><%= f.label :is_new_application %> : </b><span class="input_madatory">*</span>
+    <%= f.check_box :is_new_application, :id => "idIsNewApplication" %><br>
   </div>
   <div class="field">
-    <%= f.label :application_id %><br>
-    <%= f.text_field :application_id %>
+    <b><%= f.label :application_id %> : </b><span id="application_id" class="input_madatory">*</span><br>
+    <%= f.text_field :application_id if @token.new_record? %>
+    <%= f.text_field :application_id,:readonly => true unless @token.new_record?%>
   </div>
+  <div><b>Note: </b> All<span class="input_madatory">*</span>&nbsp; marks are madatory to fill</div><br/>
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

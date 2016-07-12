@@ -1,8 +1,9 @@
 $(document).ready(function() {
-	$("#idIsNewApplication").change(function() {	
-		//alert('$("#idIsNewApplication").checked: ', $("#idIsNewApplication").checked);
-		if ($(this).is(':checked')) {
-            //alert('checked');
+	$("#idIsNewApplication").click(function() {	
+		if ($("#idIsNewApplication").prop('checked')) {
+			$('#application_id').css('display', 'none');
+        } else {
+        	$('#application_id').css('display', 'inline-block');
         }
 	});
 });

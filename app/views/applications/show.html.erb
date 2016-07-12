@@ -53,16 +53,16 @@
     <%= form_for([@application, @application.problems.build]) do |f| %>
 
       <div>
-        <div><b>Problem Type: </b></div>
+        <div><b>Problem Type: </b> <span class="input_madatory">*</span></div>
         <%# f.text_field :problem_type %>
         <%= f.collection_select :problem_type, Problem::TYPE, :to_s, :to_s %>
       </div><br/>
 
       <div>
-        <div><b>Description: </b></div>
+        <div><b>Description: </b> <span class="input_madatory">*</span> </div>
         <%= f.text_area :description, rows: 3, cols: 40 %>
       </div><br/>
-
+      <div><b>Note: </b> All<span class="input_madatory">*</span>&nbsp; marks are madatory to fill</div><br/>
       <div>
         <%= f.submit "Create Problem" %>
       </div>
@@ -103,20 +103,20 @@
     <%= form_for([@application, @application.preceptions.build]) do |f| %>
 
       <div>
-        <div><b>Doctor Name: </b></div>
+        <div><b>Doctor Name: </b> <span class="input_madatory">*</span> </div>
         <%= f.text_field :doctor_name %>
       </div><br/>
 
       <div>
-        <div><b>Problem: </b></div>
+        <div><b>Problem: </b> <span class="input_madatory">*</span> </div>
         <%= f.text_area :problem, rows: 3, cols: 40 %>
       </div><br/>
 
       <div>
-        <div><b>Medicine: </b></div>
+        <div><b>Medicine: </b> <span class="input_madatory">*</span> </div>
         <%= f.text_area :medicine, rows: 9, cols: 40 %>
       </div><br/>
-
+      <div><b>Note: </b> All<span class="input_madatory">*</span>&nbsp; marks are madatory to fill</div><br/>
       <div>
         <%= f.submit %>
       </div>
