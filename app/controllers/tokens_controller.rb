@@ -75,6 +75,6 @@ class TokensController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def token_params
-      params.require(:token).permit(:name, :relation_name, :is_new_application, :application_id, :is_active)
+      params.require(:token).permit(:name, :relation_name, :doctor, :is_new_application, :application_id, :is_active)
     end
 end

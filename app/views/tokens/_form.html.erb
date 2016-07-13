@@ -20,6 +20,10 @@
     <%= f.check_box :is_active, :id => "idIsActive" %><br>
   </div>
   <div class="field">
+    <b>Doctor Name: </b>
+    <%= f.collection_select :doctor, Token::DOCTORS, :to_s, :to_s, :include_blank => true %>
+  </div>
+  <div class="field">
     <b><%= f.label :relation_name %> : </b><span class="input_madatory">*</span><br>
     <%= f.text_field :relation_name %>
   </div>

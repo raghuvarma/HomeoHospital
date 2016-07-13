@@ -11,8 +11,9 @@
 		<div class="nav-header">
 
 			<% if user_signed_in? %>
-			  Signed in as <%= current_user.email %>. Not you?
-			  <%= link_to "Edit profile", edit_user_registration_path %>
+			  Signed in as <%= current_user.email %>.
+			   <!-- Not you? -->
+			  <%# link_to "Edit profile", edit_user_registration_path %>
 			  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 			<% else %>
 			  <%# link_to "Sign up", new_user_registration_path %> <%= link_to "sign in", new_user_session_path %>
@@ -28,6 +29,9 @@
 				<ul>
 					<li style="list-style-type: none; display: inline-block;" click="linkClick()"><%= link_to 'Home', root_path, :style => "padding: 8px;", :click => 'javascript:linkClick()' %></li>
 					<li style="list-style-type: none; display: inline-block;" click="linkClick()"><%= link_to 'Tokens', tokens_path, :style => "padding: 8px;" %></li>
+					<% if [2,5,8].include?(current_user.role_id) %>
+					<li style="list-style-type: none; display: inline-block;" click="linkClick()"><%= link_to 'Patients', patients_path, :style => "padding: 8px;" %></li>
+					<% end %>
 					<li style="list-style-type: none; display: inline-block;" click="linkClick()"><%= link_to 'Applications', applications_path, :style => "padding: 8px;" %></li>
 				</ul>
 			</nav>

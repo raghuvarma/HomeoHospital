@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :problems, only: [:create, :update]
   end
 
+  get 'patients' => 'patients#index'
   #get 'welcome/index'
 
   devise_for :users
