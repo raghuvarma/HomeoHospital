@@ -16,12 +16,39 @@
 //= require_tree .
 $(document).ready(function() {
 	$('nav ul li a').on('click', function() {
-		//$('nav ul a').first().addClass('fdsfsd')
-		//location.pathname.substring(1, location.pathname.length);
-		//alert('location.pathname', location.pathname);
 		$(this).siblings().removeClass('active');
 		$(this).addClass('active');
-	})
+	});
+	$('#problem_other_problem_type_container').css('display', 'none');
+	
+	if($('#problem_other_problem_type').val() == 'Other') {
+		$('#problem_other_problem_type_container').css('display', 'inline-block');
+	} else {
+		$('#problem_other_problem_type_container').css('display', 'none');
+	}
+
+	$('#problem_problem_type').on('change', function (e) {
+	    var optionSelected = $("option:selected", this);
+	    var valueSelected = this.value;
+	    if(valueSelected === 'Other') {
+	    	$('#problem_other_problem_type_container').css('display', 'inline-block');
+	    } else {
+	    	$('#problem_other_problem_type').val('');
+	    	$('#problem_other_problem_type_container').css('display', 'none');
+
+	    }
+	});
+
+	$('#is_new_application_error').css('display', 'none');
+	$("#idIsNewApplication").click(function() {	
+		if ($("#idIsNewApplication").prop('checked')) {
+			$('#application_id_error').css('display', 'none');
+			$('#is_new_application_error').css('display', 'inline-block');
+        } else {
+        	$('#application_id_error').css('display', 'inline-block');
+        	$('#is_new_application_error').css('display', 'none');
+        }
+	});
 
 	// var linkClick = function() {
 	// 	//alert('hi');

@@ -28,15 +28,20 @@
 <p>
   <strong>Problems: </strong>
   <%# @application.details %>
-  
+</p>
 
 <% if @problems %>
-  <ol style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;">
+  <ol style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;list-style-type:none;">
     <% @problems.each do |problem| %>
     <li>
-      <div>
-        <b>Problem Type: </b> <%= problem.problem_type %>
+      <div style="width:55%;float: left;">
+        <b>Problem: </b> <%= problem.problem_type %>
+        <% if problem.other_problem_type && problem.other_problem_type != '' %><span>(<%= problem.other_problem_type %>)</span>
+        <% end %>
       </div>
+      <div style="width:45%;float: left;text-align: right;">
+      <b>Identifed on: </b> <i><%= problem.updated_at.strftime("%dth %b %Y at %I:%M %p") %></i>
+    </div>
       <div>
         <b>Description: </b><%= problem.description %>
       </div>
@@ -47,6 +52,7 @@
   </ol>
 <% end %>
 
+<% if [2,5,8].include?(current_user.role_id) %>
 <div>
   <h3>Create Problem: </h3>
   <div style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;">
@@ -55,9 +61,12 @@
       <div>
         <div><b>Problem Type: </b> <span class="input_madatory">*</span></div>
         <%# f.text_field :problem_type %>
-        <%= f.collection_select :problem_type, Problem::TYPE, :to_s, :to_s %>
+        <%= f.collection_select :problem_type, Problem::TYPE, :to_s, :to_s, :include_blank => true %>
+      </div>
+      <div id="problem_other_problem_type_container" style="margin: 15px 0;">
+        <div><b>Other Problem Type: </b> <span class="input_madatory">*</span> </div>
+        <%= f.text_field :other_problem_type, rows: 3, cols: 40 %>
       </div><br/>
-
       <div>
         <div><b>Description: </b> <span class="input_madatory">*</span> </div>
         <%= f.text_area :description, rows: 3, cols: 40 %>
@@ -69,22 +78,19 @@
     <% end %>
   </div>
 </div>
-
-</p>
-
-<%= link_to 'Edit', edit_application_path(@application) %> |
-<%= link_to 'Back', applications_path %>
-
-<hr/>
+<% end %>
 
 <h3>Prescriptions: </h3>
 
 <% if @application.preceptions %>
   <div style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;">
-    <% @application.preceptions.each do |preception| %>
+    <% @prescriptions.each do |preception| %>
 
-    <div>
+    <div style="width:55%;float:left;">
       <b>Doctor Name: </b> <%= preception.doctor_name %>
+    </div>
+    <div style="width:45%;float: left;text-align: right;">
+      <b>Visited on: </b> <i><%= preception.updated_at.strftime("%dth %b %Y at %I:%M %p") %></i>
     </div>
     <div>
       <b>Problem: </b><%= preception.problem %>
@@ -97,33 +103,39 @@
     <% end %>  
   </div>
 <% end %>
-<div>
-  <h3>Create Prescription: </h3>
-  <div style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;">
-    <%= form_for([@application, @application.preceptions.build]) do |f| %>
+<% if [2,5,8].include?(current_user.role_id) %>
+  <div>
+    <h3>Create Prescription: </h3>
+    <div style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;">
+      <%= form_for([@application, @application.preceptions.build]) do |f| %>
 
-      <div>
-        <div><b>Doctor Name: </b> <span class="input_madatory">*</span> </div>
-        <%= f.text_field :doctor_name %>
-      </div><br/>
+        <!-- <div>
+          <div><b>Doctor Name: </b> <span class="input_madatory">*</span> </div>
+          <%# f.text_field :doctor_name %>
+        </div><br/> -->
 
-      <div>
-        <div><b>Problem: </b> <span class="input_madatory">*</span> </div>
-        <%= f.text_area :problem, rows: 3, cols: 40 %>
-      </div><br/>
+        <div>
+          <div><b>Problem: </b> <span class="input_madatory">*</span> </div>
+          <%= f.text_area :problem, rows: 3, cols: 40 %>
+        </div><br/>
 
-      <div>
-        <div><b>Medicine: </b> <span class="input_madatory">*</span> </div>
-        <%= f.text_area :medicine, rows: 9, cols: 40 %>
-      </div><br/>
-      <div><b>Note: </b> All<span class="input_madatory">*</span>&nbsp; marks are madatory to fill</div><br/>
-      <div>
-        <%= f.submit %>
-      </div>
-    <% end %>
+        <div>
+          <div><b>Medicine: </b> <span class="input_madatory">*</span> </div>
+          <%= f.text_area :medicine, rows: 9, cols: 40 %>
+        </div><br/>
+        <div><b>Note: </b> All<span class="input_madatory">*</span>&nbsp; marks are madatory to fill</div><br/>
+        <div>
+          <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
+<br/>
 
+<hr/>
+<%= link_to 'Edit', edit_application_path(@application) %> |
+<%= link_to 'Back', applications_path %>
 <%# @lastToken %>
 
 <%# if @lastToken %>

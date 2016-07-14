@@ -2,7 +2,7 @@
 
 <h1>Patients</h1>
 
-<table>
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>Token Id</th>
@@ -23,13 +23,14 @@
         <td><%= link_to 'Show', token %></td>
         <td>
           <% if can? :update, Token %>
-            <%= link_to 'Edit', edit_token_path(token) %></td>
+            <%= link_to 'Edit', edit_token_path(token) %>
           <% end %>
+        </td>
         <td>
           <% if can? :destroy, Token %>
-            <%= link_to 'Destroy', token, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%= link_to 'Destroy', token, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>  
-        <td>
+        </td>
       </tr>
     <% end %>
   </tbody>

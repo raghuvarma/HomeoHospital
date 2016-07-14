@@ -1,8 +1,10 @@
 <!-- <p id="notice"><%# notice %></p> -->
 
 <h1>Applications</h1>
-
-<table>
+<div class="create-form-link">
+  <%= link_to 'New Application', new_application_path %>
+</div>
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>Id</th>
@@ -10,7 +12,7 @@
       <th>Relation name</th>
       <th>Address</th>
       <th>Details</th>
-      <th>Is doctor</th>
+      <!-- <th>Is doctor</th> -->
       <th colspan="2">Actions</th>
     </tr>
   </thead>
@@ -23,7 +25,7 @@
         <td><%= application.relation_name %></td>
         <td><%= application.address %></td>
         <td><%= application.details %></td>
-        <td><%= application.is_doctor %></td>
+        <!-- <td><%# application.is_doctor %></td> -->
         <td><%= link_to 'Show', application %></td>
         <td><%= link_to 'Edit', edit_application_path(application) %></td>
         <!-- <td><%# link_to 'Destroy', application, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
@@ -38,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New Application', new_application_path %>
+

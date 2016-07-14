@@ -17,7 +17,7 @@ class ApplicationsController < ApplicationController
     # @allTokens = @application.tokens
 
       @problems = @application.problems.reverse_each
-
+      @prescriptions = @application.preceptions ? @application.preceptions.order("created_at desc") : [] 
 
   end
 
