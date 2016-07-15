@@ -12,19 +12,19 @@
   <% end %>
 
   <div class="form-group field">
-    <b><%= f.label :name %> : </b><span class="input_madatory">*</span>
+    <b><%= f.label :name %> : </b><span class="input_madatory">*</span><br/>
     <%= f.text_field :name %>
   </div>
   <div class="form-group field">
-    <b><%= f.label :is_active %> : </b>
+    <b><%= f.label :is_active %> : </b><br/>
     <%= f.check_box :is_active, :id => "idIsActive" %>
   </div>
   <div class="form-group field">
-    <b>Doctor Name: </b>
+    <b><label for="doctor">Doctor Name: </label></b></div>
     <%= f.collection_select :doctor, Token::DOCTORS, :to_s, :to_s, :include_blank => true %>
   </div>
   <div class="form-group field">
-    <b><%= f.label :relation_name %> : </b><span class="input_madatory">*</span>
+    <b><%= f.label :relation_name %> : </b><span class="input_madatory">*</span><br/>
     <%= f.text_field :relation_name %>
   </div>
   <div class="form-group field">
@@ -32,12 +32,28 @@
     <%= f.check_box :is_new_application, :id => "idIsNewApplication" %>
   </div>
   <div class="form-group field">
-    <b><%= f.label :application_id %> : </b><span id="application_id_error" class="input_madatory">*</span>
+    <b><%= f.label :application_id %> : </b><span id="application_id_error" class="input_madatory">*</span><br/>
     <%= f.text_field :application_id if @token.new_record? %>
     <%= f.text_field :application_id,:readonly => true unless @token.new_record?%>
   </div>
+  <div class="form-group field">
+    <b><label for="staff1">Medicine prepared by </label> : </b> <br/>
+    <%= f.collection_select :staff1, Token::USERS, :to_s, :to_s, :include_blank => true %><br/>    
+  </div>
+   <div class="form-group field" style="display:none;">
+    <label for="is_staff2">Second Person Invoved in Medicine Prepare: </label>
+    <%= f.check_box :is_staff2_involved%>
+   </div>
+  <div class="form-group field" id="token_staff2_container" style="display:none;">
+    <b><label for="staff2">Medicine prepared by </label> : </b><span id="application_id_error" class="input_madatory">*</span><br/>
+    <%= f.collection_select :staff2, Token::USERS, :to_s, :to_s, :include_blank => true %>
+  </div>
+  <div class="form-group field">
+    <b><label for="status">Token Status </label> : </b><br/>
+    <%= f.collection_select :status, Token::STATUS, :to_s, :to_s %>
+  </div>
   <div><b>Note: </b> All<span class="input_madatory">*</span>&nbsp; marks are madatory to fill. <br/>
-  Application No is mandatory if user Application</div><br/>
+  Application No is mandatory if patient is previous patient else click on is_new_application checkbox for new patient</div><br/>
   <div class="actions">
     <%= f.submit %>
   </div>
