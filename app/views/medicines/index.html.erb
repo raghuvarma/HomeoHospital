@@ -1,34 +1,27 @@
-<!-- <p id="notice"><%# notice %></p> -->
+<!-- <p id="notice"><%= notice %></p> -->
 
-<h1>Tokens</h1>
-<% if can? :create, Token %>
-  <div class="create-form-link">
-    <%= link_to 'New Token', new_token_path %>
-  </div>
-<% end %>
+<h1>Medicines pending</h1>
+
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th>Id</th>
+      <th>Token Id</th>
       <th>Name</th>
       <th>Relation Name</th>
       <th>Application Id</th>
       <th>Doctor Name</th>
-      <th>Medicine Given By</th>
-      <th>Status</th>
       <th colspan="3">Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @tokens.each do |token| %>
+    <% @medicines.each do |token| %>
       <tr>
         <td><%= token.id %></td>
         <td><%= token.name %></td>
         <td><%= token.relation_name %></td>
         <td><%= link_to token.application_id, application_path(token.application_id) %></td>
         <td><%= token.doctor %></td>
-        <td><%= token.staff1 %> <% if token.staff2 %><span> <%= token.staff2 %></span><% end %></td>
         <td><%= link_to 'Show', token %></td>
         <td>
           <% if can? :update, Token %>
@@ -46,7 +39,6 @@
 </table>
 
 <div class="pagination_wrapper">
-  <%= paginate @tokens %>
+  <%= paginate @medicines %>
 </div>
-
 <br>

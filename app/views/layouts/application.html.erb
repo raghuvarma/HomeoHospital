@@ -39,6 +39,7 @@
 					<% if [2,5,8].include?(current_user.role_id) %>
 					<li style="list-style-type: none; display: inline-block;" click="linkClick()"><%= link_to 'Patients', patients_path, :style => "padding: 8px;" %></li>
 					<% end %>
+					<li style="list-style-type: none; display: inline-block;" click="linkClick()"><%= link_to 'Medicines', medicines_path, :style => "padding: 8px;" %></li>
 					<li style="list-style-type: none; display: inline-block;" click="linkClick()"><%= link_to 'Applications', applications_path, :style => "padding: 8px;" %></li>
 				</ul>
 			</nav>

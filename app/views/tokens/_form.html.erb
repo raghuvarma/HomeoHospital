@@ -20,7 +20,7 @@
     <%= f.check_box :is_active, :id => "idIsActive" %>
   </div>
   <div class="form-group field">
-    <b><label for="doctor">Doctor Name: </label></b></div>
+    <b><label for="doctor">Doctor Name: </label></b><br/>
     <%= f.collection_select :doctor, Token::DOCTORS, :to_s, :to_s, :include_blank => true %>
   </div>
   <div class="form-group field">

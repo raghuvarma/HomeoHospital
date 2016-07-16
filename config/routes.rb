@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   get 'patients' => 'patients#index'
+  get 'medicines' => 'medicines#index'
   #get 'welcome/index'
 
   devise_for :users

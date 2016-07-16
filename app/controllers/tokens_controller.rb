@@ -27,7 +27,7 @@ class TokensController < ApplicationController
   def create
     #@token = Token.new(token_params)
     if(@token.is_new_application)
-      @new_application = Application.new(:id => Application.last ? Application.last.id + 1 : 1, :name => @token.name, :relation_name => @token.relation_name);
+      @new_application = Application.new(:name => @token.name, :relation_name => @token.relation_name);
       @new_application.save!
       @token.application_id = @new_application.id
     end
