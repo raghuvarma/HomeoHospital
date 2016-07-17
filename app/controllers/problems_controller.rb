@@ -3,7 +3,7 @@ class ProblemsController < ApplicationController
 	def create 
 		@application = Application.find(params[:application_id])
 		@problem = @application.problems.build(problem_params)
-
+		@problem.entered_by = current_user.name
 		if @problem.save 
 			redirect_to @application, notice: "Problem created."
 		else

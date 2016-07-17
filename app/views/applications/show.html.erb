@@ -35,16 +35,19 @@
     <% @problems.each do |problem| %>
     <li>
       <div style="width:55%;float: left;">
+        <b>Entered By: </b> <i><%= problem.entered_by %></i>
+      </div>
+      <div style="width:45%;float: left;text-align: right;">
+      <b>Identifed on: </b> <i><%= problem.updated_at.localtime.strftime("%dth %b %Y at %I:%M %p") %></i>
+    </div>
+    <div>
         <b>Problem: </b> <%= problem.problem_type %>
         <% if problem.other_problem_type && problem.other_problem_type != '' %><span>(<%= problem.other_problem_type %>)</span>
         <% end %>
-      </div>
-      <div style="width:45%;float: left;text-align: right;">
-      <b>Identifed on: </b> <i><%= problem.updated_at.strftime("%dth %b %Y at %I:%M %p") %></i>
     </div>
-      <div>
-        <b>Description: </b><%= problem.description %>
-      </div>
+    <div>
+      <b>Description: </b><%= problem.description %>
+    </div>
     </li>  
     <hr/>
 
@@ -52,7 +55,7 @@
   </ol>
 <% end %>
 
-<% if [2,5,8].include?(current_user.role_id) %>
+<%# if [2,5,8].include?(current_user.role_id) %>
 <div>
   <h3>Create Problem: </h3>
   <div style="border:1px solid orange; border-radius: 5px; padding: 20px;margin: 10px;">
@@ -78,7 +81,7 @@
     <% end %>
   </div>
 </div>
-<% end %>
+<%# end %>
 
 <h3>Prescriptions: </h3>
 
@@ -90,7 +93,7 @@
       <b>Doctor Name: </b> <%= preception.doctor_name %>
     </div>
     <div style="width:45%;float: left;text-align: right;">
-      <b>Visited on: </b> <i><%= preception.updated_at.strftime("%dth %b %Y at %I:%M %p") %></i>
+      <b>Visited on: </b> <i><%= preception.updated_at.localtime.strftime("%dth %b %Y at %I:%M %p") %></i>
     </div>
     <div>
       <b>Problem: </b><%= preception.problem %>
