@@ -38,7 +38,7 @@
         <b>Entered By: </b> <i><%= problem.entered_by %></i>
       </div>
       <div style="width:45%;float: left;text-align: right;">
-      <b>Identifed on: </b> <i><%= problem.updated_at.localtime.strftime("%dth %b %Y at %I:%M %p") %></i>
+      <b>Identifed on: </b> <i><%= problem.updated_at.strftime("%dth %b %Y at %I:%M %p") %></i>
     </div>
     <div>
         <b>Problem: </b> <%= problem.problem_type %>
@@ -66,7 +66,7 @@
         <%# f.text_field :problem_type %>
         <%= f.collection_select :problem_type, Problem::TYPE, :to_s, :to_s, :include_blank => true %>
       </div>
-      <div id="problem_other_problem_type_container" style="margin: 15px 0;">
+      <div id="problem_other_problem_type_container" >
         <div><b>Other Problem Type: </b> <span class="input_madatory">*</span> </div>
         <%= f.text_field :other_problem_type, rows: 3, cols: 40 %>
       </div><br/>
@@ -93,7 +93,7 @@
       <b>Doctor Name: </b> <%= preception.doctor_name %>
     </div>
     <div style="width:45%;float: left;text-align: right;">
-      <b>Visited on: </b> <i><%= preception.updated_at.localtime.strftime("%dth %b %Y at %I:%M %p") %></i>
+      <b>Visited on: </b> <i><%= preception.updated_at.strftime("%dth %b %Y at %I:%M %p") %></i>
     </div>
     <div>
       <b>Problem: </b><%= preception.problem %>

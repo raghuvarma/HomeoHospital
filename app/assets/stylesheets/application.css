@@ -89,3 +89,7 @@ a:hover {
   	color: #000;
   }
 
+ #problem_other_problem_type_container {
+ 	margin: 15px 0;
+ 	display: none;
+ }

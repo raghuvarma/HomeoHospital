@@ -19,7 +19,7 @@ $(document).ready(function() {
 		$(this).siblings().removeClass('active');
 		$(this).addClass('active');
 	});
-	$('#problem_other_problem_type_container').css('display', 'none');
+	//$('#problem_other_problem_type_container').css('display', 'none');
 	
 	if($('#problem_other_problem_type').val() == 'Other') {
 		$('#problem_other_problem_type_container').css('display', 'inline-block');
